@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+</head>
+<body>
+    <main class="bg-rose-950 flex content-center h-screen flex-wrap flex-col justify-center relative">
+        <h1 class="text-2xl text-center text-white">🌹Will you go on a date with me?🌹</h1>
+        <div class="text-center my-10">
+            <button id="yesBtn" class="bg-pink-800 hover:bg-orange-800 text-white font-bold text-md py-2 px-4 rounded m-3">
+                Yes, absolutely!
+            </button>
+            <button id="noBtn" class="bg-amber-900 hover:bg-amber-800 text-white font-bold text-md py-2 px-4 rounded m-3">
+                Nuh-uh, sorry.
+            </button>
+        </div>
+    </main>
+
+    <script>
+        const yesBtn = document.querySelector('#yesBtn');
+        const noBtn = document.querySelector('#noBtn');
+
+        let size = 16;
+
+        yesBtn.addEventListener('click', () => {
+            let date_name = prompt('What is your name?');
+            
+            if (date_name.toLowerCase() === 'sherlyn' || date_name.toLowerCase() === 'joy' || date_name.toLowerCase() === 'sherlyn joy' || date_name.toLowerCase() === 'joy sherlyn'){
+                alert('See you on Sunday! 😂');
+            } else {
+                alert(`Sorry ${date_name}, Wrong girl. I am looking for a girl named Sherlyn Joy.`);
+            }
+        });
+
+        noBtn.addEventListener('click', () => {
+            size += 8;
+            if (size <= 99) {
+
+                if (size > 50) {
+                    yesBtn.innerHTML = "Click me, please. (●'◡'●)";
+                }
+
+                yesBtn.style.width = size + '%';
+                yesBtn.style.height = size + '%';
+                yesBtn.style.position = 'absolute';
+                yesBtn.style.zIndex = '2';
+                // make the yesBtn always at the center of the screen
+                yesBtn.style.top = '50%';
+                yesBtn.style.left = '50%';
+                yesBtn.style.transform = 'translate(-50%, -50%)';
+
+                noBtn.style.position = 'absolute';
+                noBtn.style.zIndex = '5';
+                randomCorner(noBtn);
+            } else {
+                alert('I\'m sorry, I just can\'t take no for an answer. 😊');
+                noBtn.style.display = 'none';
+            }
+        });
+
+        function randomCorner(element) {
+            const randomX = Math.floor(Math.random() * 80);
+            const randomY = Math.floor(Math.random() * 80);
+            element.style.top = randomY + '%';
+            element.style.left = randomX + '%';
+        }
+
+
+    </script>
+</body>
+</html>

@@ -35,6 +35,7 @@
         submit_btn.addEventListener('click', () => {
             let date_name = date_field.value;
             const message = document.createElement('h1');
+            const image_gif = document.createElement('img');
             
             if (date_name.toLowerCase() === 'sherlyn' || date_name.toLowerCase() === 'joy' || date_name.toLowerCase() === 'sherlyn joy' || date_name.toLowerCase() === 'joy sherlyn'){
                 date_field.remove();
@@ -42,7 +43,13 @@
 
                 message.innerHTML = `Thank you for accepting my date proposal, ${date_name}. I love you so much!!! I can't wait to see you on Sunday <3 `;
                 message.classList.add('text-2xl', 'text-center', 'text-rose-300', 'capitalize');
+
+                image_gif.setAttribute('src', './howudoingif.gif');
+                image_gif.setAttribute('alt', 'How you doin?');
+                image_gif.classList.add('mx-auto', 'my-5', 'w-1/2');
+
                 section.appendChild(message);
+                section.appendChild(image_gif);
             } else {
                 date_field.remove();
                 submit_btn.remove();

@@ -19,21 +19,54 @@
             </button>
         </div>
     </main>
+    <section class="bg-rose-950 flex content-center h-screen flex-wrap flex-col justify-center relative hidden"></section>
 
     <script>
         const yesBtn = document.querySelector('#yesBtn');
         const noBtn = document.querySelector('#noBtn');
+        const main = document.querySelector('main');
+        const section = document.querySelector('section');
+
+        const date_field = document.createElement('input');
+        const submit_btn = document.createElement('button');
 
         let size = 16;
 
-        yesBtn.addEventListener('click', () => {
-            let date_name = prompt('What is your name?');
+        submit_btn.addEventListener('click', () => {
+            let date_name = date_field.value;
+            const message = document.createElement('h1');
             
             if (date_name.toLowerCase() === 'sherlyn' || date_name.toLowerCase() === 'joy' || date_name.toLowerCase() === 'sherlyn joy' || date_name.toLowerCase() === 'joy sherlyn'){
-                alert('See you on Sunday! ❤️');
+                date_field.remove();
+                submit_btn.remove();
+
+                message.innerHTML = `Thank you for accepting my date proposal, ${date_name}. I love you so much!!! I can't wait to see you on Sunday <3 `;
+                message.classList.add('text-2xl', 'text-center', 'text-rose-300', 'capitalize');
+                section.appendChild(message);
             } else {
-                alert(`Sorry ${date_name}, Wrong girl. I am looking for a girl named Sherlyn Joy.`);
+                date_field.remove();
+                submit_btn.remove();
+
+                message.innerHTML = `Sorry ${date_name}, not my type. I am looking for my girl`;
+                message.classList.add('text-2xl', 'text-center', 'text-amber-300', 'capitalize');
+                section.appendChild(message);
             }
+        });
+
+        yesBtn.addEventListener('click', () => {
+            main.style.display = 'none';
+            section.classList.remove('hidden');
+
+            date_field.setAttribute('type', 'text');
+            date_field.setAttribute('placeholder', 'What is your name?');
+            date_field.classList.add('bg-white', 'p-2', 'rounded', 'm-3');
+
+            submit_btn.innerHTML = 'Submit';
+            submit_btn.classList.add('bg-pink-800', 'hover:bg-orange-800', 'text-white', 'font-bold', 'text-md', 'py-2', 'px-4', 'rounded', 'm-3');
+
+            section.appendChild(date_field);
+            section.appendChild(submit_btn);
+
         });
 
         noBtn.addEventListener('click', () => {
